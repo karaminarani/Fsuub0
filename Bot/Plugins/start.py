@@ -11,10 +11,12 @@ from Bot import ListOfBotAdmins, DatabaseChannelID, MustJoinID, ProtectContent
 
 @Client.on_message(filters.command("start"))
 async def Start(Bot, Msg):
+    user_id = Msg.from_user.id
+
     BotStartMessage = "**The bot is up and running. These bots can store messages in custom channels, and users access them through the bot.**"
     MustJoinMessage = "**\n\nTo view messages shared by bots. Join first, then press the Try Again button.**" 
 
-    Bot.UserDB.Insert(Msg.from_user.id)
+    Bot.UserDB.Insert(user_id)
 
     reply_markup = Buttons(Bot, Msg)
     if len(Msg.command) > 1:
@@ -31,11 +33,14 @@ async def Start(Bot, Msg):
 
             for msg in await Bot.get_messages(DatabaseChannelID, message_ids):
                 try:
-                    await msg.copy(chat_id=Msg.from_user.id, protect_content=ProtectContent)
+                    await msg.copy(chat_id=user_id, protect_content=ProtectContent)
                 except FloodWait as e:
                     Bot.Logger.warning(f"START: {e}")
                     await asyncio.sleep(e.value)
                     continue
+                except RPCError as e:
+                    Bot.Logger.error(f"{user_id}: {e}")
+                    pass
         return
     else:
         await Msg.reply(BotStartMessage, reply_markup=reply_markup, quote=True)

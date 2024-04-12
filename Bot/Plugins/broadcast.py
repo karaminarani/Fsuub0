@@ -45,9 +45,11 @@ async def Broadcast(Bot, Msg):
                 Bot.Logger.warning(f"BROADCAST: {e}")
                 await asyncio.sleep(e.value)
                 continue
-            except RPCError:
+            except RPCError as e:
+                Bot.Logger.error(f"{user_id}: {e}")
                 Bot.UserDB.Delete(user_id)
                 failed_sent += 1
+                pass
 
             if (succeeded_sent + failed_sent) % 25 == 0:
                 await broadcast_message_process.edit(f"**Broadcast Running**\n - Sent: {succeeded_sent}/{number_of_users}\n - Failed: {failed_sent}\n\n**/cancel:** Cancel the process.")
