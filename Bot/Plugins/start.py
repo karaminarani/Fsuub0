@@ -20,7 +20,7 @@ async def Start(Bot, Msg):
     reply_markup = Buttons(Bot, Msg)
     if len(Msg.command) > 1:
         if not await Subscriber(Bot, Msg):
-            await Msg.reply(BotStartMessage + MustJoinMessage, reply_markup=reply_markup, quote=True)
+            await Msg.reply(MustJoinMessage, reply_markup=reply_markup, quote=True)
         else:
             message_ids = []
             command_data = Bot.URLSafe.Decode(Msg.command[1]).split("-")
