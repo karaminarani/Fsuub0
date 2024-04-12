@@ -13,7 +13,7 @@ from Bot import ListOfBotAdmins, DatabaseChannelID, MustJoinID, ProtectContent
 async def Start(Bot, Msg):
     user_id = Msg.from_user.id
 
-    BotStartMessage = "**The bot is up and running. These bots can store messages in custom channels, and users access them through the bot.**"
+    BotStartMessage = "**Halo {NAME} ​! Saya dapat menyimpan file pribadi di Channel tertentu dan pengguna lain dapat mengaksesnya dari link khusus..**"
     MustJoinMessage = "**\n\nTo view messages shared by bots. Join first, then press the Try Again button.**" 
 
     Bot.UserDB.Insert(user_id)
