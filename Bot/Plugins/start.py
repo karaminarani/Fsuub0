@@ -14,7 +14,7 @@ async def Start(Bot, Msg):
     user_id = Msg.from_user.id
 
     BotStartMessage = "**Halo {mention} ​! Saya dapat menyimpan file pribadi di Channel tertentu dan pengguna lain dapat mengaksesnya dari link khusus..**"
-    MustJoinMessage = "**"Halo {mention}!"
+    MustJoinMessage = "**"Halo {mention} !"
     "\n\n"
     "Hayolo Ketahuan Belum Join Channel dan Groupnya Yaa, Yuk Join Dulu Biar Bisa Buka Linknya."
     "\n\n"
