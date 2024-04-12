@@ -48,7 +48,7 @@ async def Restart(Bot, Msg):
     with open("restart_id.txt", "w") as restart_id:
         restart_id.write(f"{Msg.chat.id}\n{restart_message_process.id}")
 
-    subprocess.run(["python", "-m", "bot"])
+    subprocess.run(["python", "-m", "Bot"])
 
 
 def Buttons(Bot, Msg):
