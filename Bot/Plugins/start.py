@@ -14,10 +14,7 @@ async def Start(Bot, Msg):
     user_id = Msg.from_user.id
 
     BotStartMessage = "**Halo ​! Saya dapat menyimpan file pribadi di Channel tertentu dan pengguna lain dapat mengaksesnya dari link khusus..**"
-    MustJoinMessage = "**""Hayolo Ketahuan Belum Join Channel dan Groupnya Yaa, Yuk Join Dulu Biar Bisa Buka Linknya."
-    "\n\n"
-    "Silakan Join Ke Channel dan Groupnya di Bawah Ini Terlebih Dahulu Yaa..**"
-
+    MustJoinMessage = "**Hayolo Ketahuan Belum Join Channel dan Groupnya Yaa, Yuk Join Dulu Biar Bisa Buka Linknya.\n\n Silakan Join Ke Channel dan Groupnya di Bawah Ini Terlebih Dahulu Yaa..**"
     Bot.UserDB.Insert(user_id)
 
     reply_markup = Buttons(Bot, Msg)
