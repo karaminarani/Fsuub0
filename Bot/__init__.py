@@ -8,6 +8,7 @@ from pymongo import MongoClient
 
 from pyromod import Client
 
+from pyrogram import __version__
 from pyrogram.types import BotCommand
 from pyrogram.enums import ParseMode
 from pyrogram.errors import RPCError
@@ -53,6 +54,9 @@ CompleteListOfBotCommands = [
 ]
 
 ListOfBotCommands = [command.command for command in CompleteListOfBotCommands]
+
+PythonVersion = f"{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}"
+BotVersion = f"v1.0.1 - Python v{PythonVersion} - Pyrogram v{__version__} -"
 
 
 class UserDB:
@@ -146,6 +150,8 @@ class Bot(Client):
                 chat_id, message_id = map(int, read)
                 await self.send_message(chat_id=chat_id, text="Bot restarted, broadcast has been aborted.", reply_to_message_id=message_id)
             os.remove("broadcast_id.txt")
+
+        self.Logger.info(f"{BotVersion} [ACTIVATED]")
 
     async def stop(self, *args):
         await super().stop()
